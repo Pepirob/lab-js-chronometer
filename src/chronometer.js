@@ -17,11 +17,25 @@ class Chronometer {
     return this.currentTime % 60;
   }
 
-  computeTwoDigitNumber(value) {}
+  computeTwoDigitNumber(value) {
+    if (value < 10) {
+      return `0${value}`;
+    } else {
+      return `${value}`;
+    }
+  }
 
-  stop() {}
+  stop() {
+    clearInterval(this.intervalId);
+  }
 
-  reset() {}
+  reset() {
+    this.currentTime = 0;
+  }
 
-  split() {}
+  split() {
+    const minutes = this.computeTwoDigitNumber(this.getMinutes());
+    const seconds = this.computeTwoDigitNumber(this.getSeconds());
+    return `${minutes}:${seconds}`;
+  }
 }
